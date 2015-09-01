@@ -21,5 +21,5 @@ jekyll serve # starts the site on localhost:4000
 cd docs_site
 jekyll build
 cd _site
-cf push loggregator-docs -m 64M -b https://github.com/cloudfoundry/staticfile-buildpack.git
+cf push -f ../../manifest.yml
 ```
