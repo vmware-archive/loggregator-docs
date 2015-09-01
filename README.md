@@ -23,3 +23,7 @@ jekyll build
 cd _site
 cf push -f ../../manifest.yml
 ```
+
+# CI
+
+https://concourse.walnut.cf-app.com/pipelines/loggregator?groups=loggregator-docs
