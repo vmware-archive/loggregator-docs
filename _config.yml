@@ -1,0 +1,12 @@
+# Site settings
+title: Loggregator Docs
+email: cf-dev@lists.cloudfoundry.org
+description: > # this means to ignore newlines until "baseurl:"
+   This site contains a collection of documents related to loggregator.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: cloudfoundry
+github_username:  cloudfoundry
+
+# Build settings
+markdown: kramdown
