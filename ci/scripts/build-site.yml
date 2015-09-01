@@ -1,0 +1,10 @@
+---
+platform: linux
+
+image: docker:///cloudfoundry/diego-pipeline
+
+inputs:
+- name: loggregator-docs
+
+run:
+  path: loggregator-docs/ci/scripts/build-site.sh
