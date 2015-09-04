@@ -10,3 +10,5 @@ github_username:  cloudfoundry
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
