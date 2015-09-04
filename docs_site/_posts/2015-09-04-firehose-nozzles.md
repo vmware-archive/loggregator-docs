@@ -10,7 +10,7 @@ Nozzles are programs which consume the loggregator firehose and transform the da
 
 # Loggregator Firehose
 
-The loggregator firehose is a websocket endpoint which streams all the events coming from a CloudFoundry deployment. This includes logs, HTTP events and container metrics from all applications. It also includes metrics from all components and any errors in the system. Since the data coming from the firehose may contain sensitive information (for example, customer information in the application logs), the firehose is only accessible to users who have the right permissions.
+The loggregator firehose is a websocket endpoint which streams all the events coming from a Cloud Foundry deployment. This includes logs, HTTP events and container metrics from all applications. It also includes metrics from all components and any errors in the system. Since the data coming from the firehose may contain sensitive information (for example, customer information in the application logs), the firehose is only accessible to users who have the right permissions.
 
 The firehose is served by the [loggregator traffic-controller](https://github.com/cloudfoundry/loggregator/tree/develop/src/trafficcontroller). The address of the traffic controller can be discovered by hitting the info endpoint on the API and getting the value of the `doppler_logging_endpoint`.
 
@@ -24,7 +24,7 @@ The traffic-controller serves the firehose over websocket at the `/firehose` end
 # Authentication
 The traffic-controller requires that when a client connects to the firehose endopint, it provide a valid oauth-token. The token is used to check with the UAA whether the client should be able to access the firehose.
 
-When writing a nozzle, you can either use the credentials for a UAA client who already has access to the firehose  or create a new client. The firehose is only accessible to UAA clients who have the `doppler.firehose` UAA scope set. You can add a client by editing the CloudFoundry manifest's properties.uaa.clients section. For example to add a client for a nozzle, you would add the following in the manifest:
+When writing a nozzle, you can either use the credentials for a UAA client who already has access to the firehose  or create a new client. The firehose is only accessible to UAA clients who have the `doppler.firehose` UAA scope set. You can add a client by editing the Cloud Foundry manifest's properties.uaa.clients section. For example to add a client for a nozzle, you would add the following in the manifest:
 
 ```
 properties:
