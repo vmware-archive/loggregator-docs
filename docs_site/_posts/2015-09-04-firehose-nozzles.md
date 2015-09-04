@@ -54,7 +54,9 @@ There are basically two steps to consume events from the firehose:
 A good way of seeing the firehose in action is to run the [firehose_sample application](https://github.com/cloudfoundry/noaa/blob/master/firehose_sample/main.go) present in the NOAA source code. The sample application requires that a valid oauth-token and a traffic-controller address be set as environment variables.
 
 ```
-CF_ACCESS_TOKEN="valid oauth-token" DOPPLER_ADDR="traffic-controller address" go run main.go
+CF_ACCESS_TOKEN="valid oauth-token" \
+DOPPLER_ADDR="traffic-controller address" \
+go run main.go
 ```
 
 Once you have the firehose_sample running you should be able to see data from the firehose printed on your screen. Now that you have data coming from the firehose, you can start with the code from the loggreg
