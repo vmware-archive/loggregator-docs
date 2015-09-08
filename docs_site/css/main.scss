@@ -42,7 +42,20 @@ $on-laptop:        800px;
     }
 }
 
+table, td{
+  border-collapse: collapse;
+  border-spacing: 1px;
+  border: 1px solid #000000;
+  margin-bottom: 25px;
+}
 
+td {
+  padding: 4px 0px 4px 6px;
+}
+
+th {
+  border: 1px solid #000000;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
