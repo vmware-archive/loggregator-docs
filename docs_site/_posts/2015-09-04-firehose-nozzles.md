@@ -10,7 +10,7 @@ Nozzles are programs which consume the loggregator firehose and transform the da
 
 # Loggregator Firehose
 
-The loggregator firehose is a websocket endpoint which streams all the events coming from a Cloud Foundry deployment. This includes logs, HTTP events and container metrics from all applications. It also includes metrics from all components and any errors in the system. Since the data coming from the firehose may contain sensitive information (for example, customer information in the application logs), the firehose is only accessible to users who have the right permissions.
+The loggregator firehose is a websocket endpoint which streams all the events coming from a Cloud Foundry deployment. This includes logs, HTTP events and container metrics from all applications. It also includes metrics from all components and any errors in the system. Since the data coming from the firehose may contain sensitive information (for example, customer information in the application logs), the firehose is only accessible by users who have the right permissions.
 
 The firehose is served by the [loggregator traffic-controller](https://github.com/cloudfoundry/loggregator/tree/develop/src/trafficcontroller). The address of the traffic controller can be discovered by hitting the info endpoint on the API and getting the value of the `doppler_logging_endpoint`.
 
@@ -22,9 +22,9 @@ cf curl /v2/info | jq .doppler_logging_endpoint
 The traffic-controller serves the firehose over websocket at the `/firehose` endpoint. The events coming out of the firehose are formatted as protobuf messages conforming to the [dropsonde-protocol](https://github.com/cloudfoundry/dropsonde-protocol).
 
 # Authentication
-The traffic-controller requires that when a client connects to the firehose endopint, it provide a valid oauth-token. The token is used to check with the UAA whether the client should be able to access the firehose.
+The traffic-controller requires a client to provide a valid oauth-token in order to connect to the firehose endpoint. The client is granted access to the firehose once the token is validated by the UAA.
 
-When writing a nozzle, you can either use the credentials for a UAA client who already has access to the firehose  or create a new client. The firehose is only accessible to UAA clients who have the `doppler.firehose` UAA scope set. You can add a client by editing the Cloud Foundry manifest's properties.uaa.clients section. For example to add a client for a nozzle, you would add the following in the manifest:
+When writing a nozzle, you can either use the credentials for a UAA client who already has access to the firehose  or create a new client. The firehose is only accessible to UAA clients who have the `doppler.firehose` UAA scope set. You can add a client by editing the Cloud Foundry manifest's `properties.uaa.clients` section. For example, to add a client for a nozzle, you would add the following in the manifest:
 
 ```
 properties:
@@ -39,7 +39,7 @@ properties:
         authorities: oauth.login,doppler.firehose
 ```
 
-Now with the client name and credentials, you can request an oauth-token by issuing a [POST to the `/oauth/token` endpoint](https://github.com/cloudfoundry/uaa/blob/master/docs/UAA-APIs.rst#password-grant-with-client-and-user-credentials-post-oauth-token). Alternatively, you can use a UAA client like [uaago](https://github.com/cloudfoundry/uaa/blob/master/docs/UAA-APIs.rst#password-grant-with-client-and-user-credentials-post-oauth-token) which will do that for you.
+Now with the client name (`my-nozzle`) and credentials, you can request an oauth-token by issuing a [POST to the `/oauth/token` endpoint](https://github.com/cloudfoundry/uaa/blob/master/docs/UAA-APIs.rst#password-grant-with-client-and-user-credentials-post-oauth-token). Alternatively, you can use a UAA client like [uaago](https://github.com/cloudfoundry-incubator/uaago) which will do that for you.
 
 
 # Consuming the Firehose (NOAA)
@@ -47,7 +47,7 @@ You can write your own library which consumes events from the firehose but if yo
 
 There are basically two steps to consume events from the firehose:
 
-1. Create a noaa.Consumer: The `noaa.Consumer` type is used to communicate with various traffic-controller endpoints including the firehose. When creating a new Consumer, you must specify the address of the traffic-controller (see [Loggregator Firehose](#loggregator-firehose)), TLS configuration and an optional proxying function.
+1. Create a noaa.Consumer: The `noaa.Consumer` type is used to communicate with various traffic-controller endpoints including the firehose. When creating a new consumer, you must specify the address of the traffic-controller (see [Loggregator Firehose](#loggregator-firehose)), TLS configuration and an optional proxying function.
 
 1. Consume the firehose: Once you have a consumer, you will call the `Consumer.Firehose` method to consume events from the firehose. You need to pass in a subscription ID (see [Scaling](#scaling)), a valid oauth token (see [Authentication](#authentication)), an events channel and an error channel. The consumer will send events coming from the firehose to the events channel. Any errors which occur while the firehose is running, including connection errors (see [Slow Nozzle Alerts](#slow-nozzle-alerts)), will be sent down the error channel.
 
@@ -63,9 +63,9 @@ Once you have the firehose_sample running you should be able to see data from th
 
 # Slow Nozzle Alerts
 
-The traffic controller is setup to alert nozzles who are slow at consuming events. If the nozzle is falling behind, the loggregator system will alert the nozzle in two ways
+The traffic-controller is setup to alert nozzles who are slow at consuming events. If the nozzle is falling behind, the loggregator system will alert the nozzle in two ways
 
-- TruncatingBuffer alerts: If the nozzle is consuming messages slower than they are being produced, the loggregator system may try and help the nozzle catch up by dropping messages. When this happens the loggregator system will send a log message down the firehose saying "TB: Output channel too full. Dropped (n) messages", where "n" is the number of messages it dropped. It will also emit a CounterEvent with the name `TruncatingBuffer.DroppedMessages`. The nozzle will receive both these messages from the firehose and it should alert the operator that it's falling behind.
+- TruncatingBuffer alerts: If the nozzle is consuming messages slower than they are being produced, the loggregator system may try and help the nozzle catch up by dropping messages. When this happens the loggregator system will send a log message down the firehose saying `"TB: Output channel too full. Dropped (n) messages"`, where "n" is the number of messages it dropped. It will also emit a CounterEvent with the name `TruncatingBuffer.DroppedMessages`. The nozzle will receive both these messages from the firehose and it should alert the operator that it's falling behind.
 
 - PolicyViolation error: The traffic-controller periodically sends "ping" control messages over the firehose websocket connection. If the "ping" messages aren't replied with "pong" messages within 30 seconds, the traffic-controller will assume that the nozzle is slow and close the websocket connection with the websocket error code for "ClosePolicyViolation" (1008). The nozzle should intercept this websocket close error and alert the operator that it's falling behind.
 
