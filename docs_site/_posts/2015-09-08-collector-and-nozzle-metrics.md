@@ -11,7 +11,6 @@ date:   2015-09-08 14:34:50
 
 # Metrics Unique to Collector   
 
-|-------------------------|------------------------------------------------------------|
 |  Component Name         | Metric Name                                                |
 |-------------------------|------------------------------------------------------------| 
 | CloudController         | api_z1_0.requestCount                                      | 
@@ -135,12 +134,8 @@ date:   2015-09-08 14:34:50
 | Router                  | router.total_routes                                        | 
 
 
-
-
-
 # Metrics common between Collector and Nozzles
 
-|-------------------------|-------------------------------------------------------------|
 |  Component Name         | Metric Name                                                 |
 |-------------------------|-------------------------------------------------------------| 
 |CloudController          | cc.failed_job_count.cc_api_z1_0                             |  
