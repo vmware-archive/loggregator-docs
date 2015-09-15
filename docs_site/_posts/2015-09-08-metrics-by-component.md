@@ -11,36 +11,41 @@ date:   2015-09-08 15:02:00
 - [Syslog Drain Binder](#syslog-drain-binder)
 - [DEA Logging Agent](#dea-logging-agent)
 - [Metron Agent](#metron-agent)
+- [Diego](#diego)
+
 # Cloud Controller
 Metric Name                                                   | Description
 --------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------
-vcap_sinatra.requests.outstanding                             | Number of requests currently being processed
-vcap_sinatra.requests.completed                               | Number of requests that have been completed
-vcap_sinatra.http_status.[status_code]                        | Metrics on number of http response codes for all requests
-vcap_sinatra.recent_errors                                    | 50 most recent errors
-log_counts.[severity]                                         | Metrics for number of log messages of various severity
-cc_user_count                                                 | "Total number of users ever created (includes inactive users).  Note: this field is updated at least every 10 minutes."
-cc_job_queue_length.[queue_type]                              | "Number of delayed_jobs that have yet to run for the first time. Note: this field is updated at least once every 30 seconds"
-cc_job_queue_length.total                                     | Total number of delayed_jobs that have yet to run for the first time
-thread_info.[rest bellow here]                                | Note: these fields are updated at least once every 30 seconds
-thread_info.thread_count                                      | Total number of threads that are either runnable or stopped
-thread_info.event_machine.connection_count                    | Number of open connections to event machine
-thread_info.event_machine.threadqueue.size                    | Number of unscheduled tasks in the threadqueue
-thread_info.event_machine.threadqueue.num_waiting             | Number of scheduled tasks in the threadqueue
-thread_info.event_machine.resultqueue.size                    | Number of unscheduled tasks in the result
-thread_info.event_machine.resultqueue.num_waiting             | Number of scheduled tasks in the result
-cc_failed_job_count.[queue_type]                              | "Number of failed jobs sorted by queue type. Updated once every 30 seconds. Note: this is unrelated to the worker
-cc_failed_job_count.total                                     | Total number of failed jobs
-uptime_in_seconds                                             | "The uptime of the process
+vcap\_sinatra.requests.outstanding                             | Number of requests currently being processed
+vcap\_sinatra.requests.completed                               | Number of requests that have been completed
+vcap\_sinatra.http\_status.[status\_code]                        | Metrics on number of http response codes for all requests
+vcap\_sinatra.recent\_errors                                    | 50 most recent errors
+log\_counts.[severity]                                         | Metrics for number of log messages of various severity
+cc\_user\_count                                                 | "Total number of users ever created (includes inactive users).  Note: this field is updated at least every 10 minutes."
+cc\_job\_queue\_length.[queue\_type]                              | "Number of delayed\_jobs that have yet to run for the first time. Note: this field is updated at least once every 30 seconds"
+cc\_job\_queue\_length.total                                     | Total number of delayed\_jobs that have yet to run for the first time
+thread\_info.[rest bellow here]                                | Note: these fields are updated at least once every 30 seconds
+thread\_info.thread\_count                                      | Total number of threads that are either runnable or stopped
+thread\_info.event\_machine.connection\_count                    | Number of open connections to event machine
+thread\_info.event\_machine.threadqueue.size                    | Number of unscheduled tasks in the threadqueue
+thread\_info.event\_machine.threadqueue.num\_waiting             | Number of scheduled tasks in the threadqueue
+thread\_info.event\_machine.resultqueue.size                    | Number of unscheduled tasks in the result
+thread\_info.event\_machine.resultqueue.num\_waiting             | Number of scheduled tasks in the result
+cc\_failed\_job\_count.[queue\_type]                              | "Number of failed jobs sorted by queue type. Updated once every 30 seconds. Note: this is unrelated to the worker
+cc\_failed\_job\_count.total                                     | Total number of failed jobs
+uptime\_in\_seconds                                             | "The uptime of the process
 uptime                                                        | "The uptime of the process
-mem_bytes                                                     | RSS bytes calculated by the OS
-mem_used_bytes                                                | total memory used according to the OS
-mem_free_bytes                                                | total memory available according to the OS
-cpu_load_avg                                                  | system cpu load average over a minute according to the OS
+mem\_bytes                                                     | RSS bytes calculated by the OS
+mem\_used\_bytes                                                | total memory used according to the OS
+mem\_free\_bytes                                                | total memory available according to the OS
+cpu\_load\_avg                                                  | system cpu load average over a minute according to the OS
 cpu                                                           | the percent cpu usage by the process
-num_cores                                                     | number of CPUs of the host machine
+num\_cores                                                     | number of CPUs of the host machine
+
 [Top](#metrics-by-component)
+
 # HM9000
+
  Metric Name                          | Description
 --------------------------------------|---------------------------------------------------------------------------------------------------------------------------
  HM9000.numCpus                       | Number of CPUs for the HM9000 box with the lock
@@ -50,8 +55,11 @@ num_cores                                                     | number of CPUs o
  HM9000.HM9000.StartMissing           | Increments each time HM9000 starts an instance that is missing
  HM9000.HM9000.StopDuplicate          | Increments each time a stop is scheduled for a running instance at a duplicated index
  HM9000.HM9000.StopEvacuationComplete | Increments each time HM9000 is done evacuating an instance and stops the instance
+
 [Top](#metrics-by-component)
+
 # Doppler
+
  Metric Name                                                              | Description
 --------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------
  DopplerServer.dropsondeListener.currentBufferCount                       | Instantaneous number of messages read by UDP socket but not yet unmarshalled
@@ -84,8 +92,11 @@ num_cores                                                     | number of CPUs o
  DopplerServer.signatureVerifier.invalidSignatureErrors                   | Lifetime number of messages received with an invalid signature
  DopplerServer.signatureVerifier.missingSignatureErrors                   | Lifetime number of messages received that are too small to contain a signature
  DopplerServer.signatureVerifier.validSignatures                          | Lifetime number of messages received with valid signatures
+
 [Top](#metrics-by-component)
+
 # Traffic-Controller
+
  Metric Name                                                     | Description
 -----------------------------------------------------------------|--------------------------------------------------------------------------
  LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS      | Duration of the last Garbage Collector pause in nanoseconds
@@ -96,35 +107,44 @@ num_cores                                                     | number of CPUs o
  LoggregatorTrafficController.memoryStats.numMallocs             | Lifetime number of memory allocations
  LoggregatorTrafficController.numCPUS                            | Number of CPUs on the machine
  LoggregatorTrafficController.numGoRoutines                      | Instantaneous number of active Goroutines in the Doppler process
+
 [Top](#metrics-by-component)
+
 # Syslog Drain Binder
+
  Metric Name                                            | Description
 --------------------------------------------------------|---------------------------------------------------------------------------------------------------
- syslog_drain_binder.memoryStats.lastGCPauseTimeNS      | Duration of the last Garbage Collector pause in nanoseconds
- syslog_drain_binder.memoryStats.numBytesAllocated      | Instantaneous count of bytes allocated and still in use
- syslog_drain_binder.memoryStats.numBytesAllocatedHeap  | Instantaneous count of bytes allocated on the main heap and still in use
- syslog_drain_binder.memoryStats.numBytesAllocatedStack | Instantaneous count of bytes used by the stack allocator
- syslog_drain_binder.memoryStats.numFrees               | Lifetime number of memory deallocations
- syslog_drain_binder.memoryStats.numMallocs             | Lifetime number of memory allocations
- syslog_drain_binder.numCPUS                            | Number of CPUs on the machine
- syslog_drain_binder.numGoRoutines                      | Instantaneous number of active Goroutines in the Doppler process
- syslog_drain_binder.pollCount                          | Number of times the syslog drain binder has polled the cloud controller for syslog drain bindings
- syslog_drain_binder.totalDrains                        | Number of syslog drains returned by cloud controller
+ syslog\_drain\_binder.memoryStats.lastGCPauseTimeNS      | Duration of the last Garbage Collector pause in nanoseconds
+ syslog\_drain\_binder.memoryStats.numBytesAllocated      | Instantaneous count of bytes allocated and still in use
+ syslog\_drain\_binder.memoryStats.numBytesAllocatedHeap  | Instantaneous count of bytes allocated on the main heap and still in use
+ syslog\_drain\_binder.memoryStats.numBytesAllocatedStack | Instantaneous count of bytes used by the stack allocator
+ syslog\_drain\_binder.memoryStats.numFrees               | Lifetime number of memory deallocations
+ syslog\_drain\_binder.memoryStats.numMallocs             | Lifetime number of memory allocations
+ syslog\_drain\_binder.numCPUS                            | Number of CPUs on the machine
+ syslog\_drain\_binder.numGoRoutines                      | Instantaneous number of active Goroutines in the Doppler process
+ syslog\_drain\_binder.pollCount                          | Number of times the syslog drain binder has polled the cloud controller for syslog drain bindings
+ syslog\_drain\_binder.totalDrains                        | Number of syslog drains returned by cloud controller
+
 [Top](#metrics-by-component)
+
 # DEA Logging Agent
+
  Metric Name                                          | Description
 ------------------------------------------------------|--------------------------------------------------------------------------
- dea_logging_agent.memoryStats.lastGCPauseTimeNS      | Duration of the last Garbage Collector pause in nanoseconds
- dea_logging_agent.memoryStats.numBytesAllocated      | Instantaneous count of bytes allocated and still in use
- dea_logging_agent.memoryStats.numBytesAllocatedHeap  | Instantaneous count of bytes allocated on the main heap and still in use
- dea_logging_agent.memoryStats.numBytesAllocatedStack | Instantaneous count of bytes used by the stack allocator
- dea_logging_agent.memoryStats.numFrees               | Lifetime number of memory deallocations
- dea_logging_agent.memoryStats.numMallocs             | Lifetime number of memory allocations
- dea_logging_agent.numCPUS                            | Number of CPUs on the machine
- dea_logging_agent.numGoRoutines                      | Instantaneous number of active Goroutines in the Doppler process
- dea_logging_agent.totalApps                          | The number of applications which the DEA logging agent is hooked onto
+ dea\_logging\_agent.memoryStats.lastGCPauseTimeNS      | Duration of the last Garbage Collector pause in nanoseconds
+ dea\_logging\_agent.memoryStats.numBytesAllocated      | Instantaneous count of bytes allocated and still in use
+ dea\_logging\_agent.memoryStats.numBytesAllocatedHeap  | Instantaneous count of bytes allocated on the main heap and still in use
+ dea\_logging\_agent.memoryStats.numBytesAllocatedStack | Instantaneous count of bytes used by the stack allocator
+ dea\_logging\_agent.memoryStats.numFrees               | Lifetime number of memory deallocations
+ dea\_logging\_agent.memoryStats.numMallocs             | Lifetime number of memory allocations
+ dea\_logging\_agent.numCPUS                            | Number of CPUs on the machine
+ dea\_logging\_agent.numGoRoutines                      | Instantaneous number of active Goroutines in the Doppler process
+ dea\_logging\_agent.totalApps                          | The number of applications which the DEA logging agent is hooked onto
+
 [Top](#metrics-by-component)
+
 # Metron Agent
+
  Metric Name                                   | Description
 -----------------------------------------------|----------------------------------------------------------------------------------------------------------------
  MessageAggregator.counterEventReceived        | Lifetime number of CounterEvents aggregated in Metron
@@ -168,8 +188,11 @@ num_cores                                                     | number of CPUs o
  memoryStats.numMallocs                        | Lifetime number of memory allocations
  numCpus                                       | Number of CPUs on the machine
  numGoRoutines                                 | Instantaneous number of active Goroutines in the Doppler process
+
 [Top](#metrics-by-component)
+
 # Diego
+
  Metric Name                                                 | Description
 -------------------------------------------------------------|----------------------------------------------------------------------------------------------
  auctioneer.AuctioneerFetchStatesDuration                    |
@@ -193,14 +216,14 @@ num_cores                                                     | number of CPUs o
  bbs.memoryStats.numMallocs                                  | Lifetime number of memory allocations
  bbs.numCPUS                                                 | Number of CPUs on the machine
  bbs.numGoRoutines                                           | Instantaneous number of active Goroutines in the process
- cc_uploader.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
- cc_uploader.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
- cc_uploader.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
- cc_uploader.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
- cc_uploader.memoryStats.numFrees                            | Lifetime number of memory deallocations
- cc_uploader.memoryStats.numMallocs                          | Lifetime number of memory allocations
- cc_uploader.numCPUS                                         | Number of CPUs on the machine
- cc_uploader.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
+ cc\_uploader.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
+ cc\_uploader.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
+ cc\_uploader.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
+ cc\_uploader.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
+ cc\_uploader.memoryStats.numFrees                            | Lifetime number of memory deallocations
+ cc\_uploader.memoryStats.numMallocs                          | Lifetime number of memory allocations
+ cc\_uploader.numCPUS                                         | Number of CPUs on the machine
+ cc\_uploader.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
  converger.ConvergenceLRPDuration                            |
  converger.ConvergenceLRPPreProcessingActualLRPsDeleted      |
  converger.ConvergenceLRPPreProcessingDesiredLRPsDeleted     |
@@ -217,40 +240,40 @@ num_cores                                                     | number of CPUs o
  converger.memoryStats.numMallocs                            | Lifetime number of memory allocations
  converger.numCPUS                                           | Number of CPUs on the machine
  converger.numGoRoutines                                     | Instantaneous number of active Goroutines in the process
- file_server.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
- file_server.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
- file_server.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
- file_server.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
- file_server.memoryStats.numFrees                            | Lifetime number of memory deallocations
- file_server.memoryStats.numMallocs                          | Lifetime number of memory allocations
- file_server.numCPUS                                         | Number of CPUs on the machine
- file_server.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
- garden_linux.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
- garden_linux.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
- garden_linux.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
- garden_linux.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
- garden_linux.memoryStats.numFrees                           | Lifetime number of memory deallocations
- garden_linux.memoryStats.numMallocs                         | Lifetime number of memory allocations
- garden_linux.numCPUS                                        | Number of CPUs on the machine
- garden_linux.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
- nsync_bulker.DesiredLRPSyncDuration                         |
- nsync_bulker.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
- nsync_bulker.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
- nsync_bulker.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
- nsync_bulker.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
- nsync_bulker.memoryStats.numFrees                           | Lifetime number of memory deallocations
- nsync_bulker.memoryStats.numMallocs                         | Lifetime number of memory allocations
- nsync_bulker.numCPUS                                        | Number of CPUs on the machine
- nsync_bulker.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
- nsync_listener.LRPsDesired                                  |
- nsync_listener.memoryStats.lastGCPauseTimeNS                | Duration of the last Garbage Collector pause in nanoseconds
- nsync_listener.memoryStats.numBytesAllocated                | Instantaneous count of bytes allocated and still in use
- nsync_listener.memoryStats.numBytesAllocatedHeap            | Instantaneous count of bytes allocated on the main heap and still in use
- nsync_listener.memoryStats.numBytesAllocatedStack           | Instantaneous count of bytes used by the stack allocator
- nsync_listener.memoryStats.numFrees                         | Lifetime number of memory deallocations
- nsync_listener.memoryStats.numMallocs                       | Lifetime number of memory allocations
- nsync_listener.numCPUS                                      | Number of CPUs on the machine
- nsync_listener.numGoRoutines                                | Instantaneous number of active Goroutines in the process
+ file\_server.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
+ file\_server.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
+ file\_server.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
+ file\_server.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
+ file\_server.memoryStats.numFrees                            | Lifetime number of memory deallocations
+ file\_server.memoryStats.numMallocs                          | Lifetime number of memory allocations
+ file\_server.numCPUS                                         | Number of CPUs on the machine
+ file\_server.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
+ garden\_linux.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
+ garden\_linux.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
+ garden\_linux.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
+ garden\_linux.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
+ garden\_linux.memoryStats.numFrees                           | Lifetime number of memory deallocations
+ garden\_linux.memoryStats.numMallocs                         | Lifetime number of memory allocations
+ garden\_linux.numCPUS                                        | Number of CPUs on the machine
+ garden\_linux.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
+ nsync\_bulker.DesiredLRPSyncDuration                         |
+ nsync\_bulker.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
+ nsync\_bulker.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
+ nsync\_bulker.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
+ nsync\_bulker.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
+ nsync\_bulker.memoryStats.numFrees                           | Lifetime number of memory deallocations
+ nsync\_bulker.memoryStats.numMallocs                         | Lifetime number of memory allocations
+ nsync\_bulker.numCPUS                                        | Number of CPUs on the machine
+ nsync\_bulker.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
+ nsync\_listener.LRPsDesired                                  |
+ nsync\_listener.memoryStats.lastGCPauseTimeNS                | Duration of the last Garbage Collector pause in nanoseconds
+ nsync\_listener.memoryStats.numBytesAllocated                | Instantaneous count of bytes allocated and still in use
+ nsync\_listener.memoryStats.numBytesAllocatedHeap            | Instantaneous count of bytes allocated on the main heap and still in use
+ nsync\_listener.memoryStats.numBytesAllocatedStack           | Instantaneous count of bytes used by the stack allocator
+ nsync\_listener.memoryStats.numFrees                         | Lifetime number of memory deallocations
+ nsync\_listener.memoryStats.numMallocs                       | Lifetime number of memory allocations
+ nsync\_listener.numCPUS                                      | Number of CPUs on the machine
+ nsync\_listener.numGoRoutines                                | Instantaneous number of active Goroutines in the process
  receptor.memoryStats.lastGCPauseTimeNS                      | Duration of the last Garbage Collector pause in nanoseconds
  receptor.memoryStats.numBytesAllocated                      | Instantaneous count of bytes allocated and still in use
  receptor.memoryStats.numBytesAllocatedHeap                  | Instantaneous count of bytes allocated on the main heap and still in use
@@ -275,53 +298,53 @@ num_cores                                                     | number of CPUs o
  rep.numCPUS                                                 | Number of CPUs on the machine
  rep.numGoRoutines                                           | Instantaneous number of active Goroutines in the process
  rep.RepBulkSyncDuration                                     |
- route_emitter.memoryStats.lastGCPauseTimeNS                 | Duration of the last Garbage Collector pause in nanoseconds
- route_emitter.memoryStats.numBytesAllocated                 | Instantaneous count of bytes allocated and still in use
- route_emitter.memoryStats.numBytesAllocatedHeap             | Instantaneous count of bytes allocated on the main heap and still in use
- route_emitter.memoryStats.numBytesAllocatedStack            | Instantaneous count of bytes used by the stack allocator
- route_emitter.memoryStats.numFrees                          | Lifetime number of memory deallocations
- route_emitter.memoryStats.numMallocs                        | Lifetime number of memory allocations
- route_emitter.numCPUS                                       | Number of CPUs on the machine
- route_emitter.numGoRoutines                                 | Instantaneous number of active Goroutines in the process
- route_emitter.RouteEmitterSyncDuration                      |
- route_emitter.RoutesRegistered                              |
- route_emitter.RoutesSynced                                  |
- route_emitter.RoutesTotal                                   |
- route_emitter.RoutesUnregistered                            |
- runtime_metrics_server.CrashedActualLRPs                    |
- runtime_metrics_server.CrashingDesiredLRPs                  |
- runtime_metrics_server.Domain.cf_apps                       |
- runtime_metrics_server.ETCDLeader                           |
- runtime_metrics_server.ETCDRaftTerm                         |
- runtime_metrics_server.ETCDReceivedBandwidthRate            |
- runtime_metrics_server.ETCDReceivedRequestRate              |
- runtime_metrics_server.ETCDSentBandwidthRate                |
- runtime_metrics_server.ETCDSentRequestRate                  |
- runtime_metrics_server.ETCDWatchers                         |
- runtime_metrics_server.LRPsDesired                          |
- runtime_metrics_server.LRPsRunning                          |
- runtime_metrics_server.LRPsStarting                         |
- runtime_metrics_server.memoryStats.lastGCPauseTimeNS        | Duration of the last Garbage Collector pause in nanoseconds
- runtime_metrics_server.memoryStats.numBytesAllocated        | Instantaneous count of bytes allocated and still in use
- runtime_metrics_server.memoryStats.numBytesAllocatedHeap    | Instantaneous count of bytes allocated on the main heap and still in use
- runtime_metrics_server.memoryStats.numBytesAllocatedStack   | Instantaneous count of bytes used by the stack allocator
- runtime_metrics_server.memoryStats.numFrees                 | Lifetime number of memory deallocations
- runtime_metrics_server.memoryStats.numMallocs               | Lifetime number of memory allocations
- runtime_metrics_server.MetricsReportingDuration             |
- runtime_metrics_server.numCPUS                              | Number of CPUs on the machine
- runtime_metrics_server.numGoRoutines                        | Instantaneous number of active Goroutines in the process
- runtime_metrics_server.TasksCompleted                       |
- runtime_metrics_server.TasksPending                         |
- runtime_metrics_server.TasksResolving                       |
- runtime_metrics_server.TasksRunning                         |
- ssh_proxy.memoryStats.lastGCPauseTimeNS                     | Duration of the last Garbage Collector pause in nanoseconds
- ssh_proxy.memoryStats.numBytesAllocated                     | Instantaneous count of bytes allocated and still in use
- ssh_proxy.memoryStats.numBytesAllocatedHeap                 | Instantaneous count of bytes allocated on the main heap and still in use
- ssh_proxy.memoryStats.numBytesAllocatedStack                | Instantaneous count of bytes used by the stack allocator
- ssh_proxy.memoryStats.numFrees                              | Lifetime number of memory deallocations
- ssh_proxy.memoryStats.numMallocs                            | Lifetime number of memory allocations
- ssh_proxy.numCPUS                                           | Number of CPUs on the machine
- ssh_proxy.numGoRoutines                                     | Instantaneous number of active Goroutines in the process
+ route\_emitter.memoryStats.lastGCPauseTimeNS                 | Duration of the last Garbage Collector pause in nanoseconds
+ route\_emitter.memoryStats.numBytesAllocated                 | Instantaneous count of bytes allocated and still in use
+ route\_emitter.memoryStats.numBytesAllocatedHeap             | Instantaneous count of bytes allocated on the main heap and still in use
+ route\_emitter.memoryStats.numBytesAllocatedStack            | Instantaneous count of bytes used by the stack allocator
+ route\_emitter.memoryStats.numFrees                          | Lifetime number of memory deallocations
+ route\_emitter.memoryStats.numMallocs                        | Lifetime number of memory allocations
+ route\_emitter.numCPUS                                       | Number of CPUs on the machine
+ route\_emitter.numGoRoutines                                 | Instantaneous number of active Goroutines in the process
+ route\_emitter.RouteEmitterSyncDuration                      |
+ route\_emitter.RoutesRegistered                              |
+ route\_emitter.RoutesSynced                                  |
+ route\_emitter.RoutesTotal                                   |
+ route\_emitter.RoutesUnregistered                            |
+ runtime\_metrics\_server.CrashedActualLRPs                    |
+ runtime\_metrics\_server.CrashingDesiredLRPs                  |
+ runtime\_metrics\_server.Domain.cf\_apps                       |
+ runtime\_metrics\_server.ETCDLeader                           |
+ runtime\_metrics\_server.ETCDRaftTerm                         |
+ runtime\_metrics\_server.ETCDReceivedBandwidthRate            |
+ runtime\_metrics\_server.ETCDReceivedRequestRate              |
+ runtime\_metrics\_server.ETCDSentBandwidthRate                |
+ runtime\_metrics\_server.ETCDSentRequestRate                  |
+ runtime\_metrics\_server.ETCDWatchers                         |
+ runtime\_metrics\_server.LRPsDesired                          |
+ runtime\_metrics\_server.LRPsRunning                          |
+ runtime\_metrics\_server.LRPsStarting                         |
+ runtime\_metrics\_server.memoryStats.lastGCPauseTimeNS        | Duration of the last Garbage Collector pause in nanoseconds
+ runtime\_metrics\_server.memoryStats.numBytesAllocated        | Instantaneous count of bytes allocated and still in use
+ runtime\_metrics\_server.memoryStats.numBytesAllocatedHeap    | Instantaneous count of bytes allocated on the main heap and still in use
+ runtime\_metrics\_server.memoryStats.numBytesAllocatedStack   | Instantaneous count of bytes used by the stack allocator
+ runtime\_metrics\_server.memoryStats.numFrees                 | Lifetime number of memory deallocations
+ runtime\_metrics\_server.memoryStats.numMallocs               | Lifetime number of memory allocations
+ runtime\_metrics\_server.MetricsReportingDuration             |
+ runtime\_metrics\_server.numCPUS                              | Number of CPUs on the machine
+ runtime\_metrics\_server.numGoRoutines                        | Instantaneous number of active Goroutines in the process
+ runtime\_metrics\_server.TasksCompleted                       |
+ runtime\_metrics\_server.TasksPending                         |
+ runtime\_metrics\_server.TasksResolving                       |
+ runtime\_metrics\_server.TasksRunning                         |
+ ssh\_proxy.memoryStats.lastGCPauseTimeNS                     | Duration of the last Garbage Collector pause in nanoseconds
+ ssh\_proxy.memoryStats.numBytesAllocated                     | Instantaneous count of bytes allocated and still in use
+ ssh\_proxy.memoryStats.numBytesAllocatedHeap                 | Instantaneous count of bytes allocated on the main heap and still in use
+ ssh\_proxy.memoryStats.numBytesAllocatedStack                | Instantaneous count of bytes used by the stack allocator
+ ssh\_proxy.memoryStats.numFrees                              | Lifetime number of memory deallocations
+ ssh\_proxy.memoryStats.numMallocs                            | Lifetime number of memory allocations
+ ssh\_proxy.numCPUS                                           | Number of CPUs on the machine
+ ssh\_proxy.numGoRoutines                                     | Instantaneous number of active Goroutines in the process
  stager.memoryStats.lastGCPauseTimeNS                        | Duration of the last Garbage Collector pause in nanoseconds
  stager.memoryStats.numBytesAllocated                        | Instantaneous count of bytes allocated and still in use
  stager.memoryStats.numBytesAllocatedHeap                    | Instantaneous count of bytes allocated on the main heap and still in use
@@ -335,19 +358,19 @@ num_cores                                                     | number of CPUs o
  stager.StagingRequestsSucceeded                             |
  stager.StagingRequestSucceededDuration                      |
  stager.StagingStartRequestsReceived                         |
- tps_listener.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
- tps_listener.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
- tps_listener.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
- tps_listener.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
- tps_listener.memoryStats.numFrees                           | Lifetime number of memory deallocations
- tps_listener.memoryStats.numMallocs                         | Lifetime number of memory allocations
- tps_listener.numCPUS                                        | Number of CPUs on the machine
- tps_listener.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
- tps_watcher.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
- tps_watcher.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
- tps_watcher.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
- tps_watcher.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
- tps_watcher.memoryStats.numFrees                            | Lifetime number of memory deallocations
- tps_watcher.memoryStats.numMallocs                          | Lifetime number of memory allocations
- tps_watcher.numCPUS                                         | Number of CPUs on the machine
- tps_watcher.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
+ tps\_listener.memoryStats.lastGCPauseTimeNS                  | Duration of the last Garbage Collector pause in nanoseconds
+ tps\_listener.memoryStats.numBytesAllocated                  | Instantaneous count of bytes allocated and still in use
+ tps\_listener.memoryStats.numBytesAllocatedHeap              | Instantaneous count of bytes allocated on the main heap and still in use
+ tps\_listener.memoryStats.numBytesAllocatedStack             | Instantaneous count of bytes used by the stack allocator
+ tps\_listener.memoryStats.numFrees                           | Lifetime number of memory deallocations
+ tps\_listener.memoryStats.numMallocs                         | Lifetime number of memory allocations
+ tps\_listener.numCPUS                                        | Number of CPUs on the machine
+ tps\_listener.numGoRoutines                                  | Instantaneous number of active Goroutines in the process
+ tps\_watcher.memoryStats.lastGCPauseTimeNS                   | Duration of the last Garbage Collector pause in nanoseconds
+ tps\_watcher.memoryStats.numBytesAllocated                   | Instantaneous count of bytes allocated and still in use
+ tps\_watcher.memoryStats.numBytesAllocatedHeap               | Instantaneous count of bytes allocated on the main heap and still in use
+ tps\_watcher.memoryStats.numBytesAllocatedStack              | Instantaneous count of bytes used by the stack allocator
+ tps\_watcher.memoryStats.numFrees                            | Lifetime number of memory deallocations
+ tps\_watcher.memoryStats.numMallocs                          | Lifetime number of memory allocations
+ tps\_watcher.numCPUS                                         | Number of CPUs on the machine
+ tps\_watcher.numGoRoutines                                   | Instantaneous number of active Goroutines in the process
