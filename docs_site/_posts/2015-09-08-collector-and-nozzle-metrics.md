@@ -6,10 +6,11 @@ date:   2015-09-08 14:34:50
 
 # Collector and Nozzle Metrics
 
-- [Metrics Unique to Collector](#metrics-unique-to-collector)
-- [Metrics common between Collector and Nozzles](#metrics-common-between-collector-and-nozzles)
+- [Collector Request Response Metrics](#collector-request-response-metrics)
+- [Collector Metrics](#collector-metrics)
+- [Common Metrics between Collector and Nozzles](#common-metrics-between-collector-and-nozzles)
 
-# Metrics Unique to Collector   
+# Collector Request Response Metrics
 
 |  Component Name         | Metric Name                                                |
 |-------------------------|------------------------------------------------------------| 
@@ -17,6 +18,28 @@ date:   2015-09-08 14:34:50
 | CloudController         | api_z1_0.responseCount2XX                                  | 
 | CloudController         | api_z2_0.requestCount                                      | 
 | CloudController         | api_z2_0.responseCount2XX                                  | 
+| Diego                   | auctioneer.requestCount                                    |
+| Diego                   | auctioneer.responseCount2XX                                |
+| Diego                   | bbs.requestCount                                           |
+| Diego                   | bbs.responseCount2XX                                       |
+| Diego                   | bbs.responseCount4XX                                       |
+| Diego                   | bbs.responseCount5XX                                       |
+| Diego                   | receptor.requestCount                                      |
+| Diego                   | receptor.responseCount2XX                                  |
+| Diego                   | receptor.responseCount4XX                                  |
+| Diego                   | tps_listener.requestCount                                  |
+| Diego                   | tps_listener.responseCount2XX                              |
+| Router                  | router__0.requestCount                                     |
+| Router                  | router__0.responseCount2XX                                 |
+| Router                  | router__0.responseCount3XX                                 |
+| Router                  | router__0.responseCount4XX                                 |
+| Router                  | router__0.responseCount5XX                                 |
+
+
+# Collector Metrics
+
+ Component Name          | Metric Name
+|-------------------------|------------------------------------------------------------|
 | CloudController         | cc.http_status.1XX                                         |
 | CloudController         | cc.uptime                                                  |
 | DEA                     | available_disk_ratio                                       |
@@ -42,18 +65,7 @@ date:   2015-09-08 14:34:50
 | DEA                     | mem_used_bytes                                             | 
 | DEA                     | reservable_stagers                                         | 
 | DEA/Router              | log_count                                                  | 
-| DEA/Router/CC           | uptime_in_seconds                                          | 
-| Diego                   | auctioneer.requestCount                                    | 
-| Diego                   | auctioneer.responseCount2XX                                | 
-| Diego                   | bbs.requestCount                                           | 
-| Diego                   | bbs.responseCount2XX                                       | 
-| Diego                   | bbs.responseCount4XX                                       | 
-| Diego                   | bbs.responseCount5XX                                       | 
-| Diego                   | receptor.requestCount                                      | 
-| Diego                   | receptor.responseCount2XX                                  | 
-| Diego                   | receptor.responseCount4XX                                  | 
-| Diego                   | tps_listener.requestCount                                  | 
-| Diego                   | tps_listener.responseCount2XX                              | 
+| DEA/Router/CC           | uptime_in_seconds                                          |
 | ETCD                    | etcd.leader.Followers                                      |
 | ETCD                    | etcd.leader.Latency                                        |
 | ETCD                    | etcd.server.IsLeader                                       |
@@ -111,12 +123,7 @@ date:   2015-09-08 14:34:50
 | HM9000                  | HM9000.memoryStats.numMallocs                              | 
 | HM9000                  | HM9000.numCpus                                             | 
 | HM9000                  | HM9000.numGoRoutines                                       | 
-| NATS                    | nats.latency.1m                                            | 
-| Router                  | router__0.requestCount                                     | 
-| Router                  | router__0.responseCount2XX                                 | 
-| Router                  | router__0.responseCount3XX                                 | 
-| Router                  | router__0.responseCount4XX                                 | 
-| Router                  | router__0.responseCount5XX                                 | 
+| NATS                    | nats.latency.1m                                            |
 | Router                  | router.bad_gateways                                        | 
 | Router                  | router.latency.1m                                          | 
 | Router                  | router.ms_since_last_registry_update                       | 
@@ -133,8 +140,7 @@ date:   2015-09-08 14:34:50
 | Router                  | router.total_requests                                      | 
 | Router                  | router.total_routes                                        | 
 
-
-# Metrics common between Collector and Nozzles
+# Common Metrics between Collector and Nozzles
 
 |  Component Name         | Metric Name                                                 |
 |-------------------------|-------------------------------------------------------------| 
