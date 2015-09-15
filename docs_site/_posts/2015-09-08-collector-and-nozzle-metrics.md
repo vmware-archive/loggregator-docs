@@ -38,7 +38,7 @@ date:   2015-09-08 14:34:50
 
 # Collector Metrics
 
- Component Name          | Metric Name
+| Component Name          | Metric Name                                                |
 |-------------------------|------------------------------------------------------------|
 | CloudController         | cc.http_status.1XX                                         |
 | CloudController         | cc.uptime                                                  |
