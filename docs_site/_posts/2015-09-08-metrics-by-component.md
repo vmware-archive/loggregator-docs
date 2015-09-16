@@ -210,6 +210,37 @@ num_cores                                                     | number of CPUs o
  auctioneer.memoryStats.numMallocs                           | Lifetime number of memory allocations
  auctioneer.numCPUS                                          | Number of CPUs on the machine
  auctioneer.numGoRoutines                                    | Instantaneous number of active Goroutines in the process
+ bbs.ConvergenceLRPRuns                                      |
+ bbs.ConvergenceLRPDuration                                  |
+ bbs.ConvergenceLRPPreProcessingDesiredLRPsDeleted           |
+ bbs.ConvergenceLRPPreProcessingActualLRPsDeleted            |
+ bbs.ConvergenceLRPsDeleted                                  |
+ bbs.LRPsDesired                                             |
+ bbs.LRPsStarting                                            |
+ bbs.LRPsRunning                                             |
+ bbs.CrashedActualLRPs                                       |
+ bbs.CrashingDesiredLRPs                                     |
+ bbs.ETCDLeader                                              |
+ bbs.ETCDFollowers                                           |
+ bbs.ETCDReceivedBandwidthRate                               |
+ bbs.ETCDSentBandwidthRate                                   |
+ bbs.ETCDReceivedRequestRate                                 |
+ bbs.ETCDSentRequestRate                                     |
+ bbs.ETCDRaftTerm                                            |
+ bbs.ETCDWatchers                                            |
+ bbs.ConvergenceTaskRuns                                     |
+ bbs.ConvergenceTaskDuration                                 |
+ bbs.ConvergenceTasksKicked                                  |
+ bbs.ConvergenceTasksPruned                                  |
+ bbs.TasksPending                                            |
+ bbs.TasksRunning                                            |
+ bbs.TasksCompleted                                          |
+ bbs.TasksResolving                                          |
+ bbs.RequestLatency                                          |
+ bbs.RequestCount                                            |
+ bbs.MetricsReportingDuration                                |
+ bbs.BBSMasterElected                                        |
+ bbs.MigrationDuration                                       |
  bbs.memoryStats.lastGCPauseTimeNS                           | Duration of the last Garbage Collector pause in nanoseconds
  bbs.memoryStats.numBytesAllocated                           | Instantaneous count of bytes allocated and still in use
  bbs.memoryStats.numBytesAllocatedHeap                       | Instantaneous count of bytes allocated on the main heap and still in use
@@ -313,32 +344,6 @@ num_cores                                                     | number of CPUs o
  route_emitter.RoutesSynced                                  |
  route_emitter.RoutesTotal                                   |
  route_emitter.RoutesUnregistered                            |
- runtime_metrics_server.CrashedActualLRPs                    |
- runtime_metrics_server.CrashingDesiredLRPs                  |
- runtime_metrics_server.Domain.cf_apps                       |
- runtime_metrics_server.ETCDLeader                           |
- runtime_metrics_server.ETCDRaftTerm                         |
- runtime_metrics_server.ETCDReceivedBandwidthRate            |
- runtime_metrics_server.ETCDReceivedRequestRate              |
- runtime_metrics_server.ETCDSentBandwidthRate                |
- runtime_metrics_server.ETCDSentRequestRate                  |
- runtime_metrics_server.ETCDWatchers                         |
- runtime_metrics_server.LRPsDesired                          |
- runtime_metrics_server.LRPsRunning                          |
- runtime_metrics_server.LRPsStarting                         |
- runtime_metrics_server.memoryStats.lastGCPauseTimeNS        | Duration of the last Garbage Collector pause in nanoseconds
- runtime_metrics_server.memoryStats.numBytesAllocated        | Instantaneous count of bytes allocated and still in use
- runtime_metrics_server.memoryStats.numBytesAllocatedHeap    | Instantaneous count of bytes allocated on the main heap and still in use
- runtime_metrics_server.memoryStats.numBytesAllocatedStack   | Instantaneous count of bytes used by the stack allocator
- runtime_metrics_server.memoryStats.numFrees                 | Lifetime number of memory deallocations
- runtime_metrics_server.memoryStats.numMallocs               | Lifetime number of memory allocations
- runtime_metrics_server.MetricsReportingDuration             |
- runtime_metrics_server.numCPUS                              | Number of CPUs on the machine
- runtime_metrics_server.numGoRoutines                        | Instantaneous number of active Goroutines in the process
- runtime_metrics_server.TasksCompleted                       |
- runtime_metrics_server.TasksPending                         |
- runtime_metrics_server.TasksResolving                       |
- runtime_metrics_server.TasksRunning                         |
  ssh_proxy.memoryStats.lastGCPauseTimeNS                     | Duration of the last Garbage Collector pause in nanoseconds
  ssh_proxy.memoryStats.numBytesAllocated                     | Instantaneous count of bytes allocated and still in use
  ssh_proxy.memoryStats.numBytesAllocatedHeap                 | Instantaneous count of bytes allocated on the main heap and still in use
